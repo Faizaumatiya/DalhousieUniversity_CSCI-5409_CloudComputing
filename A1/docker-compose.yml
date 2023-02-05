@@ -1,0 +1,18 @@
+version: '3'
+services:
+  container-1:
+    image: faizaumatiya/container-1
+
+    volumes:
+      - .:/etc
+    ports:
+      - "5000:5000"
+  container-2:
+    image: faizaumatiya/container-2
+    ports:
+      - "5005:5005"
+    volumes:
+      - .:/etc
+
+# Reference:
+# https://www.cloudbees.com/blog/using-docker-compose-for-nodejs-development
