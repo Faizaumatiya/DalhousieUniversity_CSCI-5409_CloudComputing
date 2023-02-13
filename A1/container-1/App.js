@@ -18,7 +18,7 @@ app.post('/checksum', (req, res) => {
         res.json({ file: req.body.file, error: "Invalid JSON input." });
     }
     else if (!fs.existsSync(name)) {
-        res.json({ file: req.body.file, error: "File Not Found" });
+        res.json({ file: req.body.file, error: "File Not Found." });
     }
     else {
         async function doPostRequest() {
