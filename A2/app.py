@@ -21,7 +21,7 @@ def store_data():
     data = request.json['data']
     print("API Called")
     s3.create_bucket(Bucket=bucket_name)
-    s3.put_object(ACL='public-read-write', Bucket=bucket_name,
+    s3.put_object(Bucket=bucket_name,
                   Key=file_name, Body=data)
     s3_uri = f"https://{bucket_name}.s3.amazonaws.com/{file_name}"
     response_data = {'s3uri': s3_uri}
@@ -39,7 +39,7 @@ def append_data():
         print("Successfully downloaded data from bucket")
         print(body)
         updated = body + data
-        s3.put_object(ACL='public-read-write', Bucket=bucket_name, Key=file_name,
+        s3.put_object(Bucket=bucket_name, Key=file_name,
                       Body=updated.encode('utf-8'))
 
     except Exception as e:
