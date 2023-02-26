@@ -15,6 +15,9 @@ s3 = boto3.client('s3',
                   aws_session_token="FwoGZXIvYXdzEKX//////////wEaDERECfNGj++3FKmjJyLAAeBW4NXn+dasu8fcWUIewPG7f673kvxC3netLCBS6ScTHL50nWeS029+6ktKrhAPvwfeVlXj1wskexa4oJnB+zoW4zvbSxVn+Y5YmJGx/h0wuUZhqz0t1vEcJMyYvOcUWHdd7cCvGPUis5twOTmBExqtoj0vz42Qec2UnnaDt6vt1xoqBQd+E2BNqDlJwEBHrg4ISVSNhgST6UIzT50VR0V3/exCkBJ0DqJbeM4b6gIZ7b2LNUEJL24pRWSflvTfnyj4peufBjIt2aTEdcmrB6CO30mfeInP67QGl6n8kQlHC4Hi5FnsOdK1ouszGycADHZgZm2e",
                   region_name="us-east-1")
 
+#[1] https://boto3.amazonaws.com/v1/documentation/api/1.9.42/guide/s3-example-creating-buckets.html
+#[2] https://stackoverflow.com/questions/41783903/append-data-to-an-s3-object#:~:text=S3%20bucket%20does%20not%20allow,to%20an%20existing%20S3%20object.
+#[3] https://stackoverflow.com/questions/3140779/how-to-delete-files-from-amazon-s3-bucket
 
 @app.route('/storedata', methods=['POST'])
 def store_data():
