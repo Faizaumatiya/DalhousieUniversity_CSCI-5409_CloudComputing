@@ -1,0 +1,53 @@
+{
+  "Comment": "A Hello World example demonstrating various state types of the Amazon States Language",
+  "StartAt": "Choice",
+  "States": {
+    "Choice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.type",
+          "StringEquals": "CONNECT",
+          "Next": "SQS SendMessage"
+        },
+        {
+          "Variable": "$.type",
+          "StringEquals": "PUBLISH",
+          "Next": "SQS SendMessage (1)"
+        },
+        {
+          "Variable": "$.type",
+          "StringEquals": "SUBSCRIBE",
+          "Next": "SQS SendMessage (2)"
+        }
+      ]
+    },
+    "SQS SendMessage": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.us-east-1.amazonaws.com/724917608342/connect-queue"
+      },
+      "End": true
+    },
+    "SQS SendMessage (1)": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.us-east-1.amazonaws.com/724917608342/publish-queue"
+      },
+      "End": true
+    },
+    "SQS SendMessage (2)": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.us-east-1.amazonaws.com/724917608342/subscribe-queue"
+      },
+      "End": true
+    }
+  }
+}
