@@ -1,0 +1,7 @@
+1. Install python
+2. create virtual environment:
+pip install virtualenv
+3. virtualenv env
+4. python -m virtualenv env
+5. env\Scripts\activate.bat
+6. pip install flask
